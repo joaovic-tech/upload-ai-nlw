@@ -11,8 +11,8 @@ export function App() {
   
   return (
     <>
-      <div className="min-h-screen flex flex-col">
-        <div className="px-6 py-3 flex items-center justify-between border-b">
+      <div className="flex flex-col min-h-screen">
+        <div className="flex items-center justify-between px-6 py-3 border-b">
           <h1 className="text-xl font-bold">upload.ai</h1>
 
           <div className="flex items-center gap-3">
@@ -28,15 +28,15 @@ export function App() {
           </div>
         </div>
         
-        <main className="flex-1 p-6 flex gap-6">
+        <main className="flex flex-1 gap-6 p-6">
           <div className="flex flex-col flex-1 gap-4">
-            <div className="grid grid-rows-2 gap-4 flex-1">
+            <div className="grid flex-1 grid-rows-2 gap-4">
               <Textarea 
-                className="resize-none p-4 leading-relaxed"
+                className="p-4 leading-relaxed resize-none"
                 placeholder="Inclua o prompt para a IA..."
               />
               <Textarea 
-                className="resize-none p-4 leading-relaxed"
+                className="p-4 leading-relaxed resize-none"
                 placeholder="Resultado gerado pela IA..." readOnly
               />
             </div>
@@ -45,11 +45,11 @@ export function App() {
               Lembre-se: voce pode utilizar a variável <code className="text-violet-400">{'{transcription}'}</code> no seu prompt para adicionar o conteúdo da transcrição do video selecionado
             </p>
           </div>
-          <aside className="w-80 space-y-6">
+          <aside className="space-y-6 w-80">
             <form className="space-y-6">
               <label
                 htmlFor="video"
-                className="border flex rounded-md aspect-video cursor-pointer border-dashed text-sm flex-col gap-2 items-center justify-center text-muted-foreground hover:bg-primary/5"
+                className="flex flex-col items-center justify-center gap-2 text-sm border border-dashed rounded-md cursor-pointer aspect-video text-muted-foreground hover:bg-primary/5"
               >
                 <FileVideo className="w-4 h-4"/>
                 Selecione um video
@@ -69,13 +69,13 @@ export function App() {
 
               <Button type="submit" className="w-full">
                 Carregar vídeo
-                <Upload className="w h-4 ml-3"/>
+                <Upload className="h-4 ml-3 w"/>
               </Button>
             </form>
 
             <Separator />
 
-            <form className="space-y-6">
+            <form className="space-y-4">
               <div className="space-y-2">
                 <Label>Prompt</Label>
                 <Select>
@@ -96,10 +96,10 @@ export function App() {
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="gpt3.5">GPT 3.5-turbo 16k</SelectItem>
+                    <SelectItem value="gpt3.5">GPT 3.5-turbo</SelectItem>
                   </SelectContent>
                 </Select>
-                <span className="block text-xs text-muted-foreground italic">
+                <span className="block text-xs italic text-muted-foreground">
                   Você poderá customizar essa opção em breve
                 </span>
               </div>
@@ -113,7 +113,7 @@ export function App() {
                   max={1}
                   step={0.1}
                 />
-                <span className="block text-xs text-muted-foreground italic leading-relaxed">
+                <span className="block text-xs italic leading-relaxed text-muted-foreground">
                   Valores mais altos tendem a deixar o resultado mais criativo e com o possíveis erros.
                 </span>
               </div>
