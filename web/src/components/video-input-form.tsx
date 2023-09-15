@@ -19,6 +19,7 @@ const statusMessages = {
 
 interface VideoInputFormProps {
   onVideoUploaded: (id: string) => void;
+  formatClass: string;
 };
 
 export function VideoInputForm(props: VideoInputFormProps) {
@@ -116,19 +117,19 @@ export function VideoInputForm(props: VideoInputFormProps) {
     <form onSubmit={handleUploadVideo} className="space-y-6">
       <label
         htmlFor="video"
-        className="relative flex flex-col items-center justify-center gap-2 m-auto text-sm border border-dashed rounded-md cursor-pointer aspect-9-16 h-96 text-muted-foreground hover:bg-primary/5"
+        className={`relative flex flex-col items-center justify-center gap-2 text-sm border border-dashed rounded-md cursor-pointer ${props.formatClass} text-muted-foreground hover:bg-primary/5`}
       >
-        {previewURL ? (
+        {!previewURL ? (
+          <>
+            <FileVideo className="w-4 h-4" />
+            Selecione um video
+          </>
+        ) : (
           <video
             src={previewURL}
             controls={false}
             className="absolute inset-0 pointer-events-none"
           ></video>
-        ) : (
-          <>
-            <FileVideo className="w-4 h-4" />
-            Selecione um video
-          </>
         )}
       </label>
       <input

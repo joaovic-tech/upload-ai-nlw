@@ -11,6 +11,7 @@ import { PromptSelect } from "./components/prompt-select";
 import { useState } from "react";
 import { useCompletion } from "ai/react";
 import { apiBaseRoute } from "./config/apiBaseRoute";
+import { FormatVideo } from "./components/format-video";
 
 export function App() {
   const [temperature, setTemperature] = useState(0.5);
@@ -47,10 +48,12 @@ export function App() {
             
             <Separator orientation="vertical" className="h-6"/>
             
-            <Button variant="outline">
-              <Github className="w-4 h-4 mr-2"/>  
-              Github
-            </Button>
+            <a href="http://github.com/joaovic-tech/upload-ai-nlw" target="_blank">
+              <Button variant="outline">
+                <Github className="w-4 h-4 mr-2"/>  
+                Github
+              </Button>
+            </a>
             <ModeToggle />
           </div>
         </div>
@@ -76,7 +79,7 @@ export function App() {
             </p>
           </div>
           <aside className="space-y-6 w-80">
-            <VideoInputForm onVideoUploaded={setVideoId} />
+            <FormatVideo setVideoId={setVideoId}/>
 
             <Separator />
 
